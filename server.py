@@ -18,11 +18,11 @@ def emotion_detector_app():
     # Extract the dominant emotion
     dominant_emotion = response['dominant_emotion']
     
-    # Format the response as requested
+    # Check if dominant_emotion is None (error case)
     if dominant_emotion is None:
         return "Invalid text! Please try again!"
     
-    # Create the formatted response string
+    # Create the formatted response string for valid input
     formatted_response = (
         f"For the given statement, the system response is "
         f"'anger': {response['anger']}, 'disgust': {response['disgust']}, "
