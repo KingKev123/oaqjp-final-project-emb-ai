@@ -53,8 +53,7 @@ def emotion_detector_app():
     return formatted_response
 
 
-iif __name__ == "__main__":
+if __name__ == "__main__":
     import os
     port = int(os.environ.get('PORT', 5000))
     app.run(host="0.0.0.0", port=port)
-    
