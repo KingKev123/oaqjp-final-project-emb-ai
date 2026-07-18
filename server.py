@@ -7,6 +7,7 @@ import logging
 import json
 from flask import Flask, render_template, request
 from flask_cors import CORS
+from markupsafe import escape
 from EmotionDetection import emotion_detector
 import sentry_sdk
 from sentry_sdk.integrations.flask import FlaskIntegration
@@ -113,10 +114,10 @@ def emotion_detector_app():
     
     formatted_response = (
         f"For the given statement, the system response is "
-        f"'anger': {response['anger']}, 'disgust': {response['disgust']}, "
-        f"'fear': {response['fear']}, 'joy': {response['joy']} and "
-        f"'sadness': {response['sadness']}. "
-        f"The dominant emotion is <b>{response['dominant_emotion']}</b>."
+        f"'anger': {escape(response['anger'])}, 'disgust': {escape(response['disgust'])}, "
+        f"'fear': {escape(response['fear'])}, 'joy': {escape(response['joy'])} and "
+        f"'sadness': {escape(response['sadness'])}. "
+        f"The dominant emotion is <b>{escape(response['dominant_emotion'])}</b>."
     )
 
     return formatted_response
